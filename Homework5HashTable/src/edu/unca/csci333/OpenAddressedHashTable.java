@@ -4,12 +4,13 @@ public class OpenAddressedHashTable {
 
 	//instance variables
 	int m;
-	int[] myArray;
+	Integer[] myArray;
+	static final int DELETED = Integer.MIN_VALUE;
 	
 	//constructor
 	public OpenAddressedHashTable(int n) {
-		this.m=0;
-		myArray = new int[m];
+		this.m=hash(n);
+		myArray = new Integer[this.m];
 	//	In the constructor, create the array of size m as an array of Integer of the same array length as the ChainedHashTable class's array.
 	//based on a hash table with open addressing, using linear probing from the slides/textbook and an auxiliary hash function identical to your ChainedHashTable's hash function. Your should use an array of Integer objects as your primary instance variable / data field.
 		
@@ -18,19 +19,19 @@ public class OpenAddressedHashTable {
 	public int insert(int k) {
 		for(int i=0; i<=this.m-1; i++) {
 			int j = hash(k, i);
-			if (myArray[j]==null OR DELETED) {
+			if (myArray[j]== null || myArray[j]== DELETED) {
 					myArray[j]=k;
 					return j;
 			}
 		}
-		error hash table overflow
+		//TODO here: error, hash table overflow
 	}
 	
 	public int delete(int k) {
 		for(int i=0; i<=this.m-1; i++){
 			int j = hash(k, i);
 			if(myArray[j]==k) {
-				myArray[j]= DELETED
+				myArray[j]= DELETED;
 				return j;
 			}
 		}
@@ -51,7 +52,6 @@ public class OpenAddressedHashTable {
 	public void printTable() {
 		
 	}
-	
 	
 	//linear probe sequence
 	private int hash(int key, int index) {
