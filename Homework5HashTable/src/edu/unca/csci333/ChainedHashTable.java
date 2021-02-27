@@ -3,19 +3,29 @@ package edu.unca.csci333;
 import java.util.Arrays;
 import java.util.LinkedList;
 
+
+
 public class ChainedHashTable {
 
 	//instance variables
+	//this is our array wherein each index has a head of a unique LinkedList.
 	public LinkedList<Integer>[] myArray;
-	
+	public int m;
 	//constructor
+	/*
+	 * @param int n, total number of inputs that will be stored in this hash table.
+	 * @precondition: n>0
+	 */
 	public ChainedHashTable(int n) {
-		//establish M
-		int m = hash(n);
-		//#todo: fix this!
+		//establish M, which is length of the array.
 		
+		//get next highest power of 2
+		this.m=1;
+		while (this.m <n) {
+			this.m *=2;
+		}
 		//create a size 'm' array of LinkedLists 
-		this.myArray = new LinkedList[m];
+		this.myArray = new LinkedList[this.m];
 		//instantiate an empty LinkedList in each spot
 		for(int i=0; i<myArray.length; i++) {
 			System.out.println(i);
@@ -53,7 +63,10 @@ public class ChainedHashTable {
 	 */ 
 	public void chtDelete(int k) {
 		int h = hash(k);
-		myArray[h].remove(k);
+		//we have to find the indexOf before we can remove it.
+		int index= myArray[h].indexOf(k);
+		if(index!= -1)
+			myArray[h].remove(index);
 	}
 		
 	/*
@@ -67,25 +80,18 @@ public class ChainedHashTable {
 	}
 	
 	/*
-	 *  This takes a key as input and returns the hash value. The hash value corresponds to an index of myArray-  that index is where the linkedList containing this item should be.
+	 *  This takes a key as input and returns the hash value. The hash value corresponds to an index of myArray-  that index is where the linkedList containing this item should be, if present.
 	 */
-	private int hash(int key) {
+	private int hash(int k) {
 		//hash = m(kA%1), rounded down
-		//we multiple A to the key K, use mod do get fractional part, then multiply by M
+		float A = (float) .6180339887;
+		int hash = (int) ((this.m)*((k*A)%1));
+		//we multiply A to the key K, use mod do get fractional part, then multiply by M
 		//choose M to be a power of 2
 		//m = 2^p where P is integer
 		//h(k) = [m(kA mod 1)]
 		//		where kA mod 1 is fractional part of kA, that is,  ( kA - [kA] )
-				
-		int hash=key-1;
 		return hash;
 	}
-	
-	
-	//public methods: insert, delete, search.
-	
-	//Also public method: printTable, which runs a loop and prints each linked list in the hash table. Consider using linkedlist tostring.
-		
-	
 	
 }
