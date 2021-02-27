@@ -15,19 +15,7 @@ public class Main {
 	/*
 	 * Main method used for testing.
 	 */
-	public static void main(String[] args) {
-		//pseudocode:
-		//create a CHT object and fill it with at least n=20 inserted elements.
-		//print the hash table.
-		//remove a handful of elements, then print table again.
-		//then search for at least 5 keys in the table, and 5 keys not in table, printing results of the search each time.
-		
-		//create an OAHT object and fill it with at least n=20 inserted elements.
-		//print the table
-		//remove a handful of elelemts, then print table again.
-		//Then search for at least 5 keys in the table and 5 keys not in the table, printing out the results of the search each time.
-
-		
+	public static void main(String[] args) {		
 		System.out.println("Chained Hash Table Test/Demonstration:"); 
 		ChainedHashTable myCHT = new ChainedHashTable(20);
 		myCHT.printTable();
@@ -53,7 +41,7 @@ public class Main {
 		myCHT.chtInsert(17);
 		myCHT.printTable();
 		//delete 5 items
-		System.out.println("Removing elemsnts: 23, 4, 43, 1, 657");
+		System.out.println("Removing elements: 23, 4, 43, 1, 657");
 		myCHT.chtDelete(23);
 		myCHT.chtDelete(4);
 		myCHT.chtDelete(43);
@@ -75,7 +63,56 @@ public class Main {
 		System.out.println(myCHT.chtSearch(5000));
 		System.out.println(myCHT.chtSearch(4000));
 		System.out.println(myCHT.chtSearch(11));
-
+		
+		
+		System.out.println("~~~~~~~~~~~~~~\n");
+		System.out.println("Open Addressed Hash Table Test/Demonstration:"); 
+		OpenAddressedHashTable myOAHT = new OpenAddressedHashTable(20);
+		myOAHT.printTable();
+		//insert 20 items
+		myOAHT.insert(4);
+		myOAHT.insert(18);
+		myOAHT.insert(18);
+		myOAHT.insert(20);
+		myOAHT.insert(20);		
+		myOAHT.insert(20);
+		myOAHT.insert(54363);
+		myOAHT.insert(492);
+		myOAHT.insert(0);
+		myOAHT.insert(11);
+		myOAHT.insert(4327);
+		myOAHT.insert(3524);
+		myOAHT.insert(436);
+		myOAHT.insert(435);
+		myOAHT.insert(434);
+		myOAHT.insert(345);
+		myOAHT.insert(7);
+		myOAHT.insert(54);
+		myOAHT.insert(43);
+		myOAHT.insert(954);
+		myOAHT.printTable();
+		//delete 5 items
+		System.out.println("Removing elements: 20, 436, 43, 3524, 954");
+		myOAHT.delete(20);
+		myOAHT.delete(436);
+		myOAHT.delete(43);
+		myOAHT.delete(3524);
+		myOAHT.delete(954);
+		myOAHT.printTable();
+		
+		//search for 5 items in table
+		System.out.println("Seeking 5 items that are in the table:");
+		System.out.println(myOAHT.search(20));
+		System.out.println(myOAHT.search(345));
+		System.out.println(myOAHT.search(7));
+		System.out.println(myOAHT.search(54));
+		System.out.println(myOAHT.search(11));		
+		//search for 5 items not in table
+		System.out.println("Seeking 5 items that are not in the table:");		
+		System.out.println(myOAHT.search(700));
+		System.out.println(myOAHT.search(800));
+		System.out.println(myOAHT.search(900));
+		System.out.println(myOAHT.search(1000));
+		System.out.println(myOAHT.search(12534534));
 	}
-
 }
