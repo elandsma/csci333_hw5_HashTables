@@ -3,23 +3,19 @@ package edu.unca.csci333;
 import java.util.Arrays;
 import java.util.LinkedList;
 
-
-
 public class ChainedHashTable {
 
 	//instance variables
-	//this is our array wherein each index has a head of a unique LinkedList.
 	public LinkedList<Integer>[] myArray;
 	public int m;
+
 	//constructor
 	/*
 	 * @param int n, total number of inputs that will be stored in this hash table.
 	 * @precondition: n>0
 	 */
 	public ChainedHashTable(int n) {
-		//establish M, which is length of the array.
-		
-		//get next highest power of 2
+		//establish m by getting next highest power of 2
 		this.m=1;
 		while (this.m <n) {
 			this.m *=2;
@@ -31,13 +27,10 @@ public class ChainedHashTable {
 			System.out.println(i);
 			myArray[i] = new LinkedList<Integer>();
 		}
-		
-		//in constructor, create array of size m as the first power of 2 larger than n, full of constructed but empty linked lists at each index.
-		//You may choose A directly, or use integer fraction method.
 	}
 	
 	/*
-	 * Insert an item into our universe, specifically at the head of the linkedList of its hash index.
+	 * Insert an item into our universe, at the head of the linkedList of its hash index.
 	 * @param int x, the key of the element we want to insert
 	 */ 
 	public void chtInsert(int x) {
@@ -46,7 +39,7 @@ public class ChainedHashTable {
 	}
 	
 	/*
-	 * Finds occurrence of element, returns it. Return -1 if not present.
+	 * Finds occurrence of element, return it if present, return -1 if not present.
 	 * @param int k, the key of the item we seek.
 	 */
 	public int chtSearch(int k) {
@@ -55,7 +48,7 @@ public class ChainedHashTable {
 			return -1;
 		}
 		else return k;
-		//in real life, we would be returning k.data, because K is just the key of the node.
+		//in real life, we would likely be returning k.data, because k is just the key of the node.
 	}
 
 	/*
@@ -86,11 +79,6 @@ public class ChainedHashTable {
 		//hash = m(kA%1), rounded down
 		float A = (float) .6180339887;
 		int hash = (int) ((this.m)*((k*A)%1));
-		//we multiply A to the key K, use mod do get fractional part, then multiply by M
-		//choose M to be a power of 2
-		//m = 2^p where P is integer
-		//h(k) = [m(kA mod 1)]
-		//		where kA mod 1 is fractional part of kA, that is,  ( kA - [kA] )
 		return hash;
 	}
 	
