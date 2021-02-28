@@ -24,7 +24,6 @@ public class ChainedHashTable {
 		this.myArray = new LinkedList[this.m];
 		//instantiate an empty LinkedList in each spot
 		for(int i=0; i<myArray.length; i++) {
-			System.out.println(i);
 			myArray[i] = new LinkedList<Integer>();
 		}
 	}

@@ -18,6 +18,7 @@ public class Main {
 	public static void main(String[] args) {		
 		System.out.println("Chained Hash Table Test/Demonstration:"); 
 		ChainedHashTable myCHT = new ChainedHashTable(20);
+		System.out.println("Empty Table before adding items: ");
 		myCHT.printTable();
 		//insert 20 items
 		myCHT.chtInsert(4);
@@ -39,9 +40,10 @@ public class Main {
 		myCHT.chtInsert(4359);
 		myCHT.chtInsert(639);
 		myCHT.chtInsert(17);
+		System.out.println("\nAfter adding 20 items: ");
 		myCHT.printTable();
 		//delete 5 items
-		System.out.println("Removing elements: 23, 4, 43, 1, 657");
+		System.out.println("\nRemoving elements: 23, 4, 43, 1, 657:");
 		myCHT.chtDelete(23);
 		myCHT.chtDelete(4);
 		myCHT.chtDelete(43);
@@ -50,14 +52,14 @@ public class Main {
 		myCHT.printTable();
 		
 		//search for 5 items in table
-		System.out.println("Seeking 5 items that are in the table:");
+		System.out.println("\nSeeking 5 items that are in the table:");
 		System.out.println(myCHT.chtSearch(17));
 		System.out.println(myCHT.chtSearch(4359));
 		System.out.println(myCHT.chtSearch(2));
 		System.out.println(myCHT.chtSearch(4));
 		System.out.println(myCHT.chtSearch(639));
 		//search for 5 items not in table
-		System.out.println("Seeking 5 items that are not in the table:");		
+		System.out.println("\nSeeking 5 items that are not in the table:");		
 		System.out.println(myCHT.chtSearch(33));
 		System.out.println(myCHT.chtSearch(428));
 		System.out.println(myCHT.chtSearch(5000));
@@ -65,11 +67,13 @@ public class Main {
 		System.out.println(myCHT.chtSearch(11));
 		
 		
-		System.out.println("~~~~~~~~~~~~~~\n");
+		System.out.println("\n~~~~~~~~~~~~~~\n");
 		System.out.println("Open Addressed Hash Table Test/Demonstration:"); 
 		OpenAddressedHashTable myOAHT = new OpenAddressedHashTable(20);
+		System.out.println("Empty Table:");
 		myOAHT.printTable();
 		//insert 20 items
+		System.out.println("\nInserting 20 items into the Table:");
 		myOAHT.insert(4);
 		myOAHT.insert(18);
 		myOAHT.insert(18);
@@ -92,7 +96,7 @@ public class Main {
 		myOAHT.insert(954);
 		myOAHT.printTable();
 		//delete 5 items
-		System.out.println("Removing elements: 20, 436, 43, 3524, 954");
+		System.out.println("\nRemoving elements: 20, 436, 43, 3524, 954");
 		myOAHT.delete(20);
 		myOAHT.delete(436);
 		myOAHT.delete(43);
@@ -101,14 +105,14 @@ public class Main {
 		myOAHT.printTable();
 		
 		//search for 5 items in table
-		System.out.println("Seeking 5 items that are in the table:");
+		System.out.println("\nSeeking 5 items that are in the table:");
 		System.out.println(myOAHT.search(20));
 		System.out.println(myOAHT.search(345));
 		System.out.println(myOAHT.search(7));
 		System.out.println(myOAHT.search(54));
 		System.out.println(myOAHT.search(11));		
 		//search for 5 items not in table
-		System.out.println("Seeking 5 items that are not in the table:");		
+		System.out.println("\nSeeking 5 items that are not in the table:");		
 		System.out.println(myOAHT.search(700));
 		System.out.println(myOAHT.search(800));
 		System.out.println(myOAHT.search(900));
