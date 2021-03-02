@@ -3,6 +3,16 @@ package edu.unca.csci333;
 import java.util.Arrays;
 import java.util.LinkedList;
 
+/**
+ * CSCI 333, Homework 5: Hash Tables
+ * This program is a demonstration of Chained Hash Tables and Open Addressed Hash Tables.
+ * This class defines the Chained Hash Table.
+ * 
+ * @author Elias Landsman
+ * @date February 26, 2021
+ */
+
+
 public class ChainedHashTable {
 
 	//instance variables

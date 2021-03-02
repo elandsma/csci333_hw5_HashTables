@@ -1,5 +1,14 @@
 package edu.unca.csci333;
 
+/**
+ * CSCI 333, Homework 5: Hash Tables
+ * This program is a demonstration of Chained Hash Tables and Open Addressed Hash Tables.
+ * This class defines the Open Addressed Hash Table.
+ * 
+ * @author Elias Landsman
+ * @date February 26, 2021
+ */
+
 public class OpenAddressedHashTable {
 
 	//instance variables
