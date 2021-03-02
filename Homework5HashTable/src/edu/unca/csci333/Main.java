@@ -4,6 +4,8 @@ import java.util.Arrays;
 
 /**
  * CSCI 333, Homework 5: Hash Tables
+ * This program is a demonstration of Chained Hash Tables and Open Addressed Hash Tables.
+ * This Main method runs the test/example methods.
  * 
  * @author Elias Landsman
  * @date February 26, 2021
@@ -13,7 +15,7 @@ import java.util.Arrays;
 public class Main {
 
 	/*
-	 * Main method used for testing.
+	 * Main method used for testing/displaying functionality of the hash tables.
 	 */
 	public static void main(String[] args) {		
 		System.out.println("Chained Hash Table Test/Demonstration:"); 
@@ -21,50 +23,50 @@ public class Main {
 		System.out.println("Empty Table before adding items: ");
 		myCHT.printTable();
 		//insert 20 items
-		myCHT.chtInsert(4);
-		myCHT.chtInsert(18);
-		myCHT.chtInsert(6);
-		myCHT.chtInsert(6);
-		myCHT.chtInsert(4);
-		myCHT.chtInsert(1543);
-		myCHT.chtInsert(4352);
-		myCHT.chtInsert(43);
-		myCHT.chtInsert(657);
-		myCHT.chtInsert(1);
-		myCHT.chtInsert(20);
-		myCHT.chtInsert(230);
-		myCHT.chtInsert(543);
-		myCHT.chtInsert(64);
-		myCHT.chtInsert(23);
-		myCHT.chtInsert(2);
-		myCHT.chtInsert(4359);
-		myCHT.chtInsert(639);
-		myCHT.chtInsert(17);
+		myCHT.insert(4);
+		myCHT.insert(18);
+		myCHT.insert(6);
+		myCHT.insert(6);
+		myCHT.insert(4);
+		myCHT.insert(1543);
+		myCHT.insert(4352);
+		myCHT.insert(43);
+		myCHT.insert(657);
+		myCHT.insert(1);
+		myCHT.insert(20);
+		myCHT.insert(230);
+		myCHT.insert(543);
+		myCHT.insert(64);
+		myCHT.insert(23);
+		myCHT.insert(2);
+		myCHT.insert(4359);
+		myCHT.insert(639);
+		myCHT.insert(17);
 		System.out.println("\nAfter adding 20 items: ");
 		myCHT.printTable();
 		//delete 5 items
 		System.out.println("\nRemoving elements: 23, 4, 43, 1, 657:");
-		myCHT.chtDelete(23);
-		myCHT.chtDelete(4);
-		myCHT.chtDelete(43);
-		myCHT.chtDelete(1);
-		myCHT.chtDelete(657);
+		myCHT.delete(23);
+		myCHT.delete(4);
+		myCHT.delete(43);
+		myCHT.delete(1);
+		myCHT.delete(657);
 		myCHT.printTable();
 		
 		//search for 5 items in table
 		System.out.println("\nSeeking 5 items that are in the table:");
-		System.out.println(myCHT.chtSearch(17));
-		System.out.println(myCHT.chtSearch(4359));
-		System.out.println(myCHT.chtSearch(2));
-		System.out.println(myCHT.chtSearch(4));
-		System.out.println(myCHT.chtSearch(639));
+		System.out.println(myCHT.search(17));
+		System.out.println(myCHT.search(4359));
+		System.out.println(myCHT.search(2));
+		System.out.println(myCHT.search(4));
+		System.out.println(myCHT.search(639));
 		//search for 5 items not in table
 		System.out.println("\nSeeking 5 items that are not in the table:");		
-		System.out.println(myCHT.chtSearch(33));
-		System.out.println(myCHT.chtSearch(428));
-		System.out.println(myCHT.chtSearch(5000));
-		System.out.println(myCHT.chtSearch(4000));
-		System.out.println(myCHT.chtSearch(11));
+		System.out.println(myCHT.search(33));
+		System.out.println(myCHT.search(428));
+		System.out.println(myCHT.search(5000));
+		System.out.println(myCHT.search(4000));
+		System.out.println(myCHT.search(11));
 		
 		
 		System.out.println("\n~~~~~~~~~~~~~~\n");

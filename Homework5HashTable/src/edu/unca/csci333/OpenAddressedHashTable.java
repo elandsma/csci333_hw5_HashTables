@@ -8,13 +8,19 @@ public class OpenAddressedHashTable {
 	static final int DELETED = Integer.MIN_VALUE;
 	
 	//constructor
+	/*
+	 * @param n, maximum number of elements in our universe.
+	 */
 	public OpenAddressedHashTable(int n) {
-		//this.m=hash(n); 
-		//The homework spec says make this same size as the chainedHash array, but shouldn't it be same as the number of inputs?
 		this.m=n;
 		myArray = new Integer[this.m];	
+		//we are creating an array of Integer objects, the size of the maximum number of objects we will have in this universe.
 	}
 	
+	/*
+	 *  Insert an element into the universe.
+	 *  @param int k, the element we are inserting.
+	 */
 	public int insert(int k) {
 		for(int i=0; i<=this.m-1; i++) {
 			int j = hash(k, i);
@@ -24,9 +30,13 @@ public class OpenAddressedHashTable {
 			}
 		}
 		return -1;
-		//TODO here: error, hash table overflow. Theoretically we have searched every spot by now and did not find an available (empty or deleted) spot.
+		//here: error, hash table overflow. Theoretically we have searched every spot by now and did not find an available (empty or deleted) spot.
 	}
 	
+	/*
+	 * Remove an element from the table.
+	 * @param int k, the element to be removed.
+	 */
 	public int delete(int k) {
 		for(int i=0; i<=this.m-1; i++){
 			int j = hash(k, i);   //call the probe sequence iteratively. This gives us the order in which we search for the key.
@@ -35,16 +45,18 @@ public class OpenAddressedHashTable {
 				return j;
 			}
 		}
-		return -1; //error 'element not found'
-	}
+		return -1; //error 'element not found'. How we handle this would depend on how we write the rest of the program.
+	}	
 	
-	
-	//Should this be "Integer" object method which enables me to return Null instead of -1?
+	/*
+	 * Seek an item in the table, return it if present, return null if not.
+	 * @param int k, the element we seek.
+	 */
 	public Integer search(int k) {
 		for(int i=0; i<=this.m-1; i++) {
 			int j = hash(k, i);
 			if(myArray[j] == null)
-				return -1; //in the item was in the table, it would be here, so null means we can stop searching because the item won't be further along our probe. We ignore "deleted" items and keep searching, however.
+				return -1; //in the item was in the table, it would be here, so null means we can stop searching because the item won't be further along our probe. We know this because a "deleted" element would be a different value (and that means our element could potentially be further down the linear probe), so "null" means we haven't touched this index yet. For "deleted" values of an index, we ignore them and keep searching/probing.
 			if (myArray[j]==k)
 				return myArray[j]; //found it, return it.
 		}
@@ -52,7 +64,7 @@ public class OpenAddressedHashTable {
 	}
 	
 	/*
-	 * Prints out our hash table in a neat format. Displays "deleted" spaces as though they are empty
+	 * Prints out our hash table in a neat format. For educational purposes, this clearly displays when spaces are "deleted" (as in, had a value previously, but now do not), but in production code this wouldn't necessarily be how you want to display this, depending on the usage.
 	 */
 	public void printTable() {
 		for(int i=0; i<myArray.length; i++) {
@@ -65,20 +77,18 @@ public class OpenAddressedHashTable {
 				System.out.println(String.valueOf(myArray[i]));
 		}
 	}
-	
-	//primary hash function.
-	//given a key and an index into the probe sequence, returns the appropriate element of the probe sequence, which is an index into the hash table's main array.
-	//It does this by invoking the auxiliary hash method.
-	
+		
 	/*
-	 *	This is our primary hash function that enables linear probing. It calls the auxiliary 
+	 *	This is our primary hash function that enables linear probing. It calls the auxiliary hash method and performs a function on that number to return where we are probing.
+	 *	@param int key, the key of element we are placing.
+	 *	@param index, this is iterative and given from the parent method that calls this function. This number is hashed together with the key, to return the value of the index to look at next.
 	 */
 	private int hash(int key, int index) {
 		int hprime = hash(key);
 		return ((hprime+index)%m);
 		//tells you the i'th place to look.
 	}
-	
+		
 	/*
 	 *  This takes a key as input and returns the hash value.
 	 *  This is the "auxiliary" hash function.
@@ -88,8 +98,5 @@ public class OpenAddressedHashTable {
 		float A = (float) .6180339887;
 		int hash = (int) ((this.m)*((k*A)%1));
 		return hash;
-	}
-	
-	
-	
+	}		
 }
